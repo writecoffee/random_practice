@@ -3,6 +3,7 @@
 #include <cstring>
 using namespace std;
 
+// swap without using temporary variable
 void swap(char &a, char &b) {
 	a = a ^ b;
 	b = a ^ b;
@@ -13,6 +14,7 @@ void reverse(char *cstring) {
 	int i = 0;	
 	unsigned int end = strlen(cstring) - 1;	
 
+	// iterate till the mid
 	while (i != (end + 1) / 2) {
 		swap(cstring[i], cstring[end - i]);	
 		++i;
