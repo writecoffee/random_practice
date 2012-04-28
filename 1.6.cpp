@@ -1,3 +1,10 @@
+//////////////////////////////////////////////////////////////////////////////////////
+// bear in mind i's and j's rotating direction 
+// e.g. the iterator of array[(i, j), ..., (n - 2i)(j)] is from left to right 
+//      so array[(n - j, i), ..., (i + 1, i)] is from bottom to top, where i denotes
+//      the matrix level and j denotes the iterator position. 
+//////////////////////////////////////////////////////////////////////////////////////
+
 #include <cstdlib>
 #include <iostream>
 using namespace std;
