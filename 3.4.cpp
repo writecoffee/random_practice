@@ -4,6 +4,16 @@
 // --	if disks with level-n could be moved to any tower, it requires that 
 // 	its level-(n-1) sub-disks could also be moved to any tower;
 // --	QED!
+//
+// 	2f(1) = 2
+// 	2f(2) = 4(f1) + 2
+// 	......
+// 	2f(n) = 4f(n-1) + 2
+// =>
+// 	2f(n) = 2[f(n-1) + ... + f(1)] + 2n
+//	 f(n) = (2^n - 1 + 2n) / 2 		[ Sn = a1(1-q^n) / (1-q) ]
+// =>
+//	 O(n) = 2^n
 /////////////////////////////////////////////////////////////////////////////
 
 #include <cstdio>
