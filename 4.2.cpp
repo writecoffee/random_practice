@@ -12,7 +12,9 @@ BFS(G, s)
         - mark w as explored
         - add w to Q
 
-so the main while loop's time complexity is proportional to s, namely O(Ns + Ms), all nodes and all edges (see the if-unexplored statement, each loop takes us O(1) constant time) reachable from s.
+so the main while loop's time complexity is proportional to s, namely 
+O(Ns + Ms), all nodes and all edges (see the if-unexplored statement, 
+each loop takes us O(1) constant time) reachable from s.
 
 the DFS algorithm is as follows:
 
@@ -23,7 +25,8 @@ DFS(G, s)
     - if v unexplored
         - DFS(G, v)
 
-time complexity is also O(Ns + Ms), nodes reachable from s are visited at most once and edges reachable from s are visited at most twice.
+time complexity is also O(Ns + Ms), nodes reachable from s are visited 
+at most once and edges reachable from s are visited at most twice.
 *************************************************************************/
 
 //////////////////////////////////////////////////////////////////////////
