@@ -1,3 +1,34 @@
+/**************************** ADD-UP ************************************
+the BFS algorithm is as follows:
+
+BFS(G, s)
+[for all nodes, mark unexplored]
+- mark s as explored
+- let Q = queue ds, initiated with s
+- while Q not empty
+    - remove 1st node of Q, call it v
+    - for each edge(v, w)
+    - if w unexplored
+        - mark w as explored
+        - add w to Q
+
+so the main while loop's time complexity is proportional to s, namely 
+O(Ns + Ms), all nodes and all edges (see the if-unexplored statement, 
+each loop takes us O(1) constant time) reachable from s.
+
+the DFS algorithm is as follows:
+
+DFS(G, s)
+[for all nodes, mark unexplored]
+- mark s as explored
+- for every edge(s, v)
+    - if v unexplored
+        - DFS(G, v)
+
+time complexity is also O(Ns + Ms), nodes reachable from s are visited 
+at most once and edges reachable from s are visited at most twice.
+*************************************************************************/
+
 //////////////////////////////////////////////////////////////////////////
 // use breath-first-search or depth-first-search to do find
 // time complexity is O(M + N) [or O(max(M, N))]
