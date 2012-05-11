@@ -1,13 +1,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 // MAKE_LIST:
 // use multimap to store <depth-i, Node> pair, filter each pairs and store in the i-th
-// list after that
+// list after that; the entire process is like DFS
 //	-- let input variable be the height H, then maximum nodes count is N = 2^H - 1
-//	-- then make-pair work costs O(log(2^H)) time complexity
+//	-- then make-pair work costs O(N) time complexity
 //	-- then "filter" work costs us O(2^H), in linear time proportional to our N
 //
 // BUILD_TREE
-// apply BFS with use two queues to store current level nodes and the next 
+// apply BFS mindset with use two queues to store current level nodes and the next 
 // respectively
 //	-- O(2^(H+1)) time complexity, as using 2 times the N operations
 ///////////////////////////////////////////////////////////////////////////////////////
