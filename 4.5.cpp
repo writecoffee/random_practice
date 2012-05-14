@@ -1,4 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////////////////
+// FIND_IN-ORDER_SUCCESSOR_OF S
 // divide into several conditions:
 //	case-1:		s has right child 	
 //				-> return right child's leftmost child or itself otherwise
@@ -8,7 +9,8 @@
 //				-> return father
 //
 //	case-2-2: 	s itself is the right child 
-//	case-2-2(i)	s can be traced back to case-2-1 until <s == s->f->l> found
+//	case-2-2(i)	s can be traced back with <EXIST<s->f> AND s == s->f->l>
+//				-> go to case-2-1(s)
 //
 //	case-2-2(e)	s cannot be traced back to case-2-1
 //				-> no successor
@@ -29,6 +31,7 @@
 // 	all conditions covered? (Y)
 //	all branches covered? (Y)
 //	all lines covered? (Y)
+// END_FIND
 //////////////////////////////////////////////////////////////////////////////////////////
 
 #include <cstdio>
@@ -160,3 +163,79 @@ int main() {
 
 	return 0;
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// FIND PRE-ORDER SUCCESSOR OF S
+// divide into several conditions:
+//	case-1:		s has left child
+//				-> return left child of s
+//
+//	case-2: 	s has right child
+//				-> return right child of s
+//
+//	case-3: 	s only has a father
+//	case-3(i):	s can be tracked back with <EXIST(s->f) AND s->f->l == s) 
+//			with <EXIST(s->r)>
+//				-> go to case-2(s->f)
+//
+//	case-3(e):	s cannot be updated until s reached root
+//				-> no successor
+//
+//	case-4:		s is a single root node
+//				-> no successor
+//
+// test cases (might be informal):
+//	ts-1:		s is a single root node
+//				-> case-4
+//
+//	ts-2:		s is a root node with two children
+//				-> case-1 and case-2
+//
+//	ts-3:		s is the right-most child
+//				-> case-3(e)
+//
+//	ts-4:		s is the left-most child
+//				-> case-3(i)
+//
+// 	all conditions covered? (Y)
+//	all branches covered? (Y)
+//	all lines covered? (UNSURE)
+// END FIND
+//
+// FIND POST-ORDER SUCCESSOR OF S
+// divide into several conditions:
+//	assert:		s has at least one child
+//
+//	case-1:		s has father
+//	case-1-1:	s is a left child
+//	case-1-1-1:	s's father has right child
+//	case-1-1-1(i):	if <EXIST(LEFTMOST(s->f->r))>
+//				-> return left-most child of s->f->r
+//
+//	case-1-1-1(e):	if not <EXIST(LEFTMOST(s))> 
+//				-> return s->f->r
+//
+//	case-1-1-2:	s's father don't have a right child
+//				-> return s->f
+//
+//	case-1-2:	s is a right child
+//				-> return s->f
+//
+//	case-2:		s is a root node
+//				-> no successor
+//
+// test cases (might be informal):
+//	ts-1:		s is a root node
+//				-> case-2
+//
+//	ts-2:		s is the right-most child
+//				-> case-1-2
+//
+//	ts-4:		s is the left-most child
+//				-> case-1-1
+//
+// 	all conditions covered? (UNSURE)
+//	all branches covered? (UNSURE)
+//	all lines covered? (UNSURE)
+// END FIND
+//////////////////////////////////////////////////////////////////////////////////////////
