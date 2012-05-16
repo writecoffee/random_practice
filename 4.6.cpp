@@ -1,3 +1,34 @@
+//////////////////////////////////////////////////////////////////////////
+// COVERS: 	
+// -- 	divide the tree into two recursively and count targets while 
+//	doing search
+// --	the worst case is that all nodes of the subtree are compared,
+//	which is in proportional to the n
+//
+// COMMON:	
+// -- 	desginate the searching direction according to the results of 
+//	@COVERS return
+// -1.	if TWO found, we can search deeper
+// -2.	if ONE found, check whether cr is the target (RECURSION ENDS)
+// -3.	if ONE found in both sides, cr is the common ancestor
+// --	truncate the searching paths according to @COVERS
+//
+// Time Complexity:
+// 	master method is applied. let N is the tree nodes of binary tree,
+//	divided half in each recursion, accoridng to the inequation:
+//		T(n) <= 2T(n / 2) + O(n ^ 1), 
+//	where
+//		a(2) = b(2) ^ d(1)
+//	then we have, 
+//		T(N) = O(NlogN)
+//	let N = 2^H - 1, where H denotes the height of the tree
+//		T(H) = O(H * 2 ^ H)
+//
+// 	for the first attempt in the solution of the book, in the worst
+// 	case each node is touched twice, so the time complexity is 2 times 
+// 	the later one with O(H * 2 ^ (H + 1))
+//////////////////////////////////////////////////////////////////////////
+
 #include <cstdio>
 #include <ctime>
 #include <cstdlib>
@@ -30,7 +61,7 @@ int covers(const Node<T> *cr, const Node<T> *p, const Node<T> *q) {
 }
 
 template <typename T>
-Node<T> *find_conjunct(Node<T> *cr, const Node<T> *p, const Node<T> *q) {
+Node<T> *common(Node<T> *cr, const Node<T> *p, const Node<T> *q) {
 	assert(cr && p && q);
 
 	int l_cnt = 0, r_cnt = 0;
@@ -43,7 +74,7 @@ Node<T> *find_conjunct(Node<T> *cr, const Node<T> *p, const Node<T> *q) {
 			if (cr->left == p || cr->left == q) { return cr->left; }
 	
 			// trace down, otherwise
-			else { return find_conjunct(cr->left, p, q); }
+			else { return common(cr->left, p, q); }
 	
 		} else if (l_cnt == ONE) {
 			// if p/q is the left sub-root, end search
@@ -59,7 +90,7 @@ Node<T> *find_conjunct(Node<T> *cr, const Node<T> *p, const Node<T> *q) {
 			if (cr->right == p || cr->right == q) { return cr->right; }
 	
 			// trace down, otherwise
-			else { return find_conjunct(cr->right, p, q); }
+			else { return common(cr->right, p, q); }
 	
 		} else if (r_cnt == ONE) {
 			// if p/q is the right sub-root, end search
@@ -112,7 +143,6 @@ Node<T> *build_tree(int height, Node<T> **t1, Node<T> **t2) {
 			if (t1_f && t1_i == q->size()) { *t1 = t; }
 			if (t2_f && t2_i == q->size()) { *t2 = t; } 
 
-
 			// left child fixed
 			if (rand() % 2) { t->left = new Node<T>(rand() % 100, h); p->push(t->left); }
 
@@ -158,7 +188,7 @@ int main() {
 
 	Node<int> *root		= build_tree<int>(height, &p, &q);
 	print_tree(root, 0);
-	Node<int> *result	= find_conjunct<int>(root, p, q);
+	Node<int> *result	= common<int>(root, p, q);
 
 	assert(p && q);
 	assert(result->depth <= p->depth && result->depth <= q->depth);
