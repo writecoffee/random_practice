@@ -30,10 +30,7 @@ struct Node {
 		if (cp.right) { this->right = new Node<T>(*cp.right); }
 	}
 
-	~Node() {
-		if (left) { left->~Node(); }
-		if (right) { right->~Node(); }
-	}
+	~Node() { if (left) { left->~Node(); } if (right) { right->~Node(); } }
 };
 
 template <typename T>
@@ -56,13 +53,8 @@ void print_tree(const Node<T> *cr, int cd) {
 	assert(cr && cd >= 0);
 
 	int i = cd + 1; while (i--) { printf("  "); } printf("%d\n", cr->val);
-
 	if (cr->left) { print_tree(cr->left, cd + 1); }
-
-	if (cr->right) {
-		if (!cr->left) { printf("\n"); }
-		print_tree(cr->right, cd + 1); 
-	}
+	if (cr->right) { if (!cr->left) { printf("\n"); } print_tree(cr->right, cd + 1); }
 }
 
 template <typename T>
@@ -78,11 +70,8 @@ Node<T> *build_tree(const int height, Node<T> **sub_t) {
 	int	sub_t_d = rand() % height;
 
 	while (1) {
-		if (sub_t_d == 0 || sub_t_d == h) { 
-			sub_t_f = true; sub_t_i = rand() % q->size(); 
-		} else { 
-			sub_t_f = false; 
-		}
+		if (sub_t_d == 0 || sub_t_d == h) { sub_t_f = true; sub_t_i = rand() % q->size(); } 
+		else { sub_t_f = false; }
 
 		while (!q->empty()) {
 			Node<T> *t = q->front(); q->pop();
@@ -91,16 +80,10 @@ Node<T> *build_tree(const int height, Node<T> **sub_t) {
 			if (sub_t_f && sub_t_i == q->size()) { *sub_t = t; }
 
 			// left child fixed
-			if (rand() % 2) { 
-				t->left = new Node<T>(rand() % 100, h); 
-				p->push(t->left); 
-			}
+			if (rand() % 2) { t->left = new Node<T>(rand() % 100, h); p->push(t->left); }
 
 			// right child fixed
-			else { 
-				t->right = new Node<T>(rand() % 100, h); 
-				p->push(t->right); 
-			}
+			else { t->right = new Node<T>(rand() % 100, h); p->push(t->right); }
 
 			// randomize the other child
 			if (rand() % 2) {
@@ -115,7 +98,6 @@ Node<T> *build_tree(const int height, Node<T> **sub_t) {
 		}
 	
 		if (++h == height) { break; }
-
 		if (q == &s) { q = &r; p = &s; } else if (q == &r) { q = &s; p = &r; }
 	}
 
