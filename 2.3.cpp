@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 using namespace std;
 
 struct Node {
@@ -33,8 +34,8 @@ public:
 	bool empty() { return _head.next == NULL; }
 
 	Node *iterate(Node *curr) {
-		Node *retVal = curr->next;
-		if (retVal == &_end) _curr = &_head;
+		Node *retVal;
+		(retVal = curr->next) == &_end ? curr = &_head : curr = retVal;
 		return retVal;
 	}
 
@@ -64,9 +65,7 @@ void remove_middle(LinkedList<int> *ll, Node *tar) {
 }
 
 int main() {
-	int size = 20;
-	int mid = 10;
-	LinkedList<int> ll;
+	srand(time(0)); int size = 20, mid = 10; LinkedList<int> ll;
 
 	for (int i = 0; i < size; ++i) { ll.push_back(rand() % size); }
 	print(&ll);

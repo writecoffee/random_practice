@@ -104,7 +104,7 @@ Node<T> *build_tree(const int height, Node<T> **sub_t) {
 
 			// randomize the other child
 			if (rand() % 2) {
-				if (t->left) { 
+				if (t->left) {
 					t->right = new Node<T>(rand() % 100, h); 
 					p->push(t->right); 
 				} else {

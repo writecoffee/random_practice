@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 using namespace std;
 
 struct Node {
@@ -33,8 +34,8 @@ public:
 	bool empty() { return _head.next == NULL; }
 
 	Node *iterate(Node *curr) {
-		Node *retVal = curr->next;
-		if (retVal == &_end) _curr = &_head;
+		Node *retVal; 
+		(retVal = curr->next) == &_end ? _curr = &_head : _curr = retVal;
 		return retVal;
 	}
 
@@ -70,6 +71,7 @@ int find_n_of_tail(LinkedList<int> *ll, int n) {
 }
 
 int main() {
+	srand(time(0));
 	int size = 20;
 	LinkedList<int> ll;
 	for (int i = 0; i < size; ++i) { ll.push_back(rand() % size); }
