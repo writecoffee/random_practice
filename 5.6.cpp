@@ -22,8 +22,8 @@ void print_bin(T val) {
 template <typename T>
 T swap_odd_even(T val) {
 	unsigned int len = sizeof(T) * 8; T odd_mask = 0, even_mask = 0;
-	for (int i = 0; i < len; i += 2) { odd_mask |= (1 << i); }
-	for (int i = 1; i < len; i += 2) { even_mask |= (1 << i); }
+	for (int i = 0; i < len; i += 8) { odd_mask |= (0x55 << i); }
+	for (int i = 0; i < len; i += 8) { even_mask |= (0xaa << i); }
 	return ((val & odd_mask) << 1) | ((val & even_mask) >> 1);
 }
 
