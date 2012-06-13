@@ -24,10 +24,10 @@
 #include <cmath>
 using namespace std;
 
-static const int 	N = 100;
-static const char 	ON = '1';
-static const char 	OFF = '0';
-static int 		MISS;
+static const int N 	= 100;
+static const char ON 	= '1';
+static const char OFF 	= '0';
+static int MISS;
 
 char fetch(const pair<char *, int> &val, const int col) {
 	assert(col < val.second);
@@ -35,8 +35,8 @@ char fetch(const pair<char *, int> &val, const int col) {
 	return val.first[col];
 }
 
-void find_miss_helper(vector<pair<char *, int> > &array, char *missing, const int col, int lev) {
-	if (col < 0) { return; }
+int find_miss(vector<pair<char *, int> > &array, const int col, int lev) {
+	if (col < 0) { return 0; }
 	assert((int)abs(array.size() - (unsigned int)((N - 1) / pow(2, lev))) <= 1);
 
 	vector<pair<char *, int> > cnt_offs, cnt_ons;
@@ -46,19 +46,10 @@ void find_miss_helper(vector<pair<char *, int> > &array, char *missing, const in
 	}
 
 	if (cnt_offs.size() > cnt_ons.size()) {
-		missing[col] = ON;
-		find_miss_helper(cnt_ons, missing, col - 1, lev + 1);
+		return find_miss(cnt_ons, col - 1, lev + 1) << 1 | 1;
 	} else if (cnt_offs.size() <= cnt_ons.size()) {
-		missing[col] = OFF;
-		find_miss_helper(cnt_offs, missing, col - 1, lev + 1);
+		return find_miss(cnt_offs, col - 1, lev + 1) << 1 | 0;
 	}
-}
-
-bool find_miss(vector<pair<char *, int> > &array, char *missing, int width) {
-	if (array.size() != N - 1) { return false; }
-	find_miss_helper(array, missing, width - 1, 0);
-	missing[width] = 0;
-	return true;
 }
 
 template <typename T>
@@ -76,21 +67,15 @@ char *itoa(T val) {
 template <typename T>
 void test_case() {
 	vector<pair<char *, T> > array; int width = sizeof(T) * 8;
-	char *missing = new char[width + 1]; 
 
 	cout << "missing value: " << MISS << endl;
-
 	for (int i = 0; i < N; ++i) {
 		if (i != MISS) array.push_back(make_pair(itoa<T>(i), width));
 	}
-
-	find_miss(array, missing, width)?
-		cout << "value found: " << missing << endl :
-		cout << "value not found!" << endl;
+	cout << "value found: " << find_miss(array, width - 1, 0) << endl;
 }
 
 int main() {
-	srand(time(0)); MISS = rand() % N;
-	test_case<int>();
+	srand(time(0)); MISS = rand() % N; test_case<int>();
 	return 0;
 }
