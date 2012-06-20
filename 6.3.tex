@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+%\usepackage{geometry}\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\pagestyle{headings}
+\usepackage{enumerate} 
+\usepackage{amssymb}
+\linespread{1}
+\hyphenation{}
+\author{writecoffee}
+\title{6.3}
+%\usepackage{fancyhdr} \pagestyle{fancy} \fancyfoot{} \fancyhead[LE,RO]{\textsc \leftmark~~~~\thepage} \fancyhead[LO,RE]{\textsc \leftmark~~~~\thepage} \renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+\maketitle
+
+{\setlength{\baselineskip}{1\baselineskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\begin{enumerate}[1.]
+\item
+	After observation, we see that 4 quart is as a result of $3$(quart) + $1$(quart), where $1$ is the GCD of $5$ and $3$, %
+	so we can employ the Euclidean algorithm to compute the GCD(1) first.
+\item
+	We use the Euclidean algorithm to find the variable $x, y$ in equation:
+	\begin{equation}5x + 3y = 1,\end{equation}
+	and here comes the process:
+	\begin{eqnarray*}
+	5 &=& 3(1) + 2\\
+	3 &=& 2(1) + 1,
+	\end{eqnarray*}
+	as we reverse the process,
+	\begin{eqnarray}
+	\label{2quart}
+	2 &=& 5 - 3(1)\\
+	\label{1quart}
+	1 &=& 3 - 2(1),
+	\end{eqnarray}
+	then substitute $2$ in (\ref{1quart}) with (\ref{2quart}), and we get:
+	\begin{eqnarray}
+	1 &=& 3 - 5(1) + 3(1)\\
+	\label{result}
+	1 &=& 3(2) + 5(-1).
+	\end{eqnarray}
+	Equation (\ref{result}) tells us that in order to get exactly 1 quart we need to fill the 3 quart jug twice and emtpy the 5 quart %
+	jug once. To show this in a detailed sequence: fill 3Q jug $\to$ empty 3Q jug to 5Q jug $\to$ fill 3Q jug $\to$ fill 5Q with 3Q jug %
+	$\to$ empty the 5Q jug.
+\item
+	Now we have an empty 5Q jug and a 3Q jug with 1 quart there, so finishing the process we just need to move that 1 quart %
+	to the 5Q jug and fill the 3Q jug again combining it with previous 1 quart.
+\end{enumerate}
+\par}
+\end{document}
