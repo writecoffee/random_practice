@@ -1,0 +1,35 @@
+\documentclass[11pt,twoside,onecolumn,a4paper,notitlepage]{article}
+%\usepackage{geometry}\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+%\pagestyle{headings}
+\usepackage{enumerate} \linespread{1}
+\hyphenation{}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhead[LE,RO]{\textsc \leftmark~~~~\thepage}
+\fancyhead[LO,RE]{\textsc \leftmark~~~~\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+\author{writecoffee}
+\title{6.1}
+\maketitle
+
+{\setlength{\baselineskip}{1\baselineskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\begin{enumerate}[1.]
+\item
+	Think of a few operations can lead to 8, i.e., 4 * 2 = 8, 16 / 2 = 8, 4 + 4 = 8, %
+	and my intuition helps me rule out 2nd and 3rd one, so we can just %
+	focus on the number 4 and 2 regardless of their positions.
+\item
+	Notice that the 1st and 2nd operands of the expected expression easily added to 4
+\item
+ 	Also notice that the 3rd and 4th operands could generate 2 by via 6 / 2. Since %
+	operator * and / have the same precedence, we could just flip ``/ 2'' and ``* 6''.
+\item
+	Here come the solution: (3 + 1) / 2 * 6 = 8.
+\end{enumerate}
+\par}
+\end{document}

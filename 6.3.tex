@@ -1,0 +1,79 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}\geometry{left=2.5cm,right=2.5cm,top=3.5cm,bottom=3.5cm}
+\pagestyle{headings}
+\usepackage{enumerate} 
+\usepackage{amssymb} \linespread{1} \hyphenation{}
+\usepackage{booktabs}
+\author{writecoffee} \title{6.3}
+%\usepackage{fancyhdr} \pagestyle{fancy} \fancyfoot{} \fancyhead[LE,RO]{\textsc \leftmark~~~~\thepage} \fancyhead[LO,RE]{\textsc \leftmark~~~~\thepage} \renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+\maketitle
+
+{\setlength{\baselineskip}{1\baselineskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\begin{enumerate}[1.]
+\item
+	Note that as long as the two jug sizes are relatively prime, we can find a sequence for any value between 1 and the sum of the jug %
+	size. We conclude by observation that 4 quart is as a result of $3$(quart) + $1$(quart), where $1$ is the GCD of $5$ and $3$, %
+	so we can employ the Euclidean algorithm to express $(a, b)$ as a linear combinationof $a$ and $b$.
+\item
+	Let's cite the Theorem 3.14 \cite{ENT} that
+	\begin{equation}
+	(a, b) = s_na + t_nb
+	\end{equation}
+	where $s_n$ and $t_n$ are the $n$th terms of the sequences defined recursively by
+	\[
+	s_0 = 1, \quad t_0 = 0
+	\]
+	\[
+	s_1 = 0, \quad t_1 = 1
+	\]
+	and
+	\[
+	s_j = s_{j-2} - q_{j-1}s_{j-1}, \quad t_j = t_{j-2} - q_{j-1}t_{j-1}
+	\]
+	for $j = 2,3,\cdots,n$, where the $q_j$ are the quotients in the divisions of the Euclidean algorithm when it is used to find %
+	$(a,b)$.\\
+\item
+	Here comes the computing process (see Table \ref{tab:process}).
+	\begin{table}
+	\centering
+	\begin{tabular}{l|cccccc}
+	j & 	$r_j$ &	$r_{j+1}$ &	$q_{j+1}$ &	$r_{j+2}$ &	$s_j$ &	$t_j$	\\
+	\midrule
+	0 &	5 &	3 &		1 &		2 &		1 &	0	\\
+	1 &	3 &	2 &		1 &		1 &		0 &	1	\\
+	2 &	2 &	1 &		2 &		0 &		1 &	-1	\\
+	3 &	&	& 		&		&		-1 &	2	\\
+	\end{tabular}
+	\caption{process of the extened Euclidean algorithm}
+	\label{tab:process}
+	\end{table}
+	Since $r_3 = 1 = (5,3)$ and $r_3 = s_4a + r_4b$, we have
+	\begin{equation}
+	\label{eq:result}
+	1 = (5, 3) = -1 \cdot 5 + 2 \cdot 3
+	\end{equation}
+	Equation (\ref{eq:result}) tells us that in order to get exactly 1 quart we need to fill the 3 quart jug twice and emtpy the 5 quart %
+	jug once.
+\item
+	Seperate the operation into detailed sequence \{fill, dump, transfer\}, above description could be settled down to the following
+	\begin{itemize}
+	\item fill $3Q$
+	\item transfer \emph{3} quart from $3Q$ to $5Q$
+	\item fill $3Q$
+	\item transfer \emph{2} quart from $3Q$ to $5Q$
+	\item dump 5Q
+	\item transfer \emph{1} quart from $3Q$ to $5Q$
+	\end{itemize}
+	As we treat $5Q$ as the resulting jug, as well as treat the above sequence as atomic operation, we can repeat the above steps %
+	to accumulate the expected \emph{4} quart. If, of course, in the subsequent operation, our expected \emph{4} quart is encountered, %
+	we can terminate the repetion resolutely, i.e., we would finish the blending by the second time transfer \emph{3} quart from $3Q$ to %
+	$5Q$.
+\end{enumerate}
+\par}
+\bibliographystyle{plain}
+\bibliography{6.3}
+\end{document}
