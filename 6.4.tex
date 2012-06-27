@@ -1,0 +1,52 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}\geometry{left=2.5cm,right=2.5cm,top=3.5cm,bottom=3.5cm}
+\pagestyle{headings}
+\usepackage{enumerate} 
+\usepackage{amssymb} \linespread{1} \hyphenation{}
+\usepackage{booktabs}
+\author{writecoffee} \title{6.4}
+%\usepackage{fancyhdr} \pagestyle{fancy} \fancyfoot{} \fancyhead[LE,RO]{\textsc \leftmark~~~~\thepage} \fancyhead[LO,RE]{\textsc \leftmark~~~~\thepage} \renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+\maketitle
+
+{\setlength{\baselineskip}{1\baselineskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\begin{enumerate}[1.]
+\item
+	First Glimpse
+	\begin{itemize}
+	\item
+	\emph{Case 1}\\
+	when $c=1$, the man who is wearing a hat looks around and see other guys don't get put on a hat. %
+	The genie said that at least one guy is wearing a hat, and hence he could deduce the hat is on his head. %
+	As a result, one night is needed for that person to dunk himself in the water.
+	\item
+	\emph{Case 2}\\
+	happends when two men are wearing hats. They look around and see barely one hat but they are not sure %
+	whether there is one hat or two. So these two guys wait until DAY $\#2$ and from their perspective, if the hat seen yesterday %
+	still kept they can deduce $c=2$. Both of them would remove the hats on NIGHT $\#2$.
+	\item
+	\emph{Case General}\\
+	if $c=n$ then the hats would be removed at NIGHT %\#n$.
+	\end{itemize}
+\item
+	Proof by Induction
+	\begin{itemize}
+	\item
+	\emph{Base case}\\
+	$c=1$ if there is only one hat and that guy would dunk himself into the water consciously at the following night.
+	\item
+	\emph{Induction}\\
+	assume true for $c=n$ that hats would be removed on NIGHT $\#n$. Let's prove that it's also true for $c=n+1$. %
+	Each man with a hat sees $n$ hats and is unsure whether he has a hat or not (in another word, he is unsure $c=n$ %
+	or $c=n+1$). And he knows that if there were $n$ hats then those hats would be removed on NIGHT $\#n$. If not, guys who %
+	is wearing a hat could intelligently conclude that the ``last'' hat would be on his own head. So hats would be removed %
+	at the same night (NIGHT $\#n+1$).
+	\end{itemize}
+\end{enumerate}
+\par}
+%\bibliographystyle{plain}
+%\bibliography{6.4}
+\end{document}
