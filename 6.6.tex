@@ -1,0 +1,36 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}\geometry{left=2.5cm,right=2.5cm,top=3.5cm,bottom=3.5cm}
+\pagestyle{headings}
+\usepackage{enumerate} 
+\usepackage{amssymb} \linespread{1} \hyphenation{}
+\usepackage{booktabs}
+\author{writecoffee} \title{6.6}
+%\usepackage{fancyhdr} \pagestyle{fancy} \fancyfoot{} \fancyhead[LE,RO]{\textsc \leftmark~~~~\thepage} \fancyhead[LO,RE]{\textsc \leftmark~~~~\thepage} \renewcommand{\headrulewidth}{0.4pt} 
+\begin{document}
+\maketitle
+
+{\setlength{\baselineskip}{1\baselineskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\begin{enumerate}[1.]
+\item
+	First Glimpse
+	\begin{itemize}
+	\item
+	The only way a locker could be left open is when it's toggled an odd number of times. So our objective turns to finding those numbers.
+	\end{itemize}
+\item
+	When would a number could be toggled odd times?
+	\begin{itemize}
+	\item
+	If we pair $n$'s factors by their complements, through citing several examples, we can observe that only perfect numbers that 
+	consist of odd numbers of factors, e.g., $36 = (1, 36) = (2, 18) = (3, 12) = (4, 9) = (6, 6)$, since $(6, 6)$ only contributes 1 %
+	factor, totally 9 (odd) numbers of factors are taken into consideration.
+	\item
+	There are 10 perfect squares, they are \{1, 4, 9, 16, 25, 36, 49, 64, 81, 100\}, and hence 10 lockers are left open.
+	\end{itemize}
+\end{enumerate}
+\par}
+%\bibliographystyle{plain}
+%\bibliography{6.6}
+\end{document}
