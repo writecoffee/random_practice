@@ -1,0 +1,44 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}\geometry{left=2.5cm,right=2.5cm,top=3.5cm,bottom=3.5cm}
+\pagestyle{headings}
+\usepackage{enumerate} 
+\usepackage{amssymb} \linespread{1} \hyphenation{}
+\usepackage{booktabs}
+\author{writecoffee} \title{6.5}
+%\usepackage{fancyhdr} \pagestyle{fancy} \fancyfoot{} \fancyhead[LE,RO]{\textsc \leftmark~~~~\thepage} \fancyhead[LO,RE]{\textsc \leftmark~~~~\thepage} \renewcommand{\headrulewidth}{0.4pt} 
+\begin{document}
+\maketitle
+
+{\setlength{\baselineskip}{1\baselineskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\begin{enumerate}[1.]
+\item
+	First Glimpse
+	\begin{itemize}
+	\item
+	An intuitive way of solving this kind of problem would be the binary search technique. %
+	Of course we can do binary search at first, if breaks, and then do linear search from the bottom until the second egg breaks. %
+	Unfortunately, this would not generate a stablized $N$ -- imagine that if $N=49$ we then need to have 50 drops in total.
+	\end{itemize}
+\item
+	Create a consistent system
+	\begin{itemize}
+	\item
+	In general, we expect in the worst case, regardless of where the Egg1 broke, $Drops(Egg1) + Drops(Egg2)$ is always a consant value %
+	$N$, i.e., if $Egg1$ brokes at floor $N$, we need to do a linear search from floor 1 to $N-1$ with $Egg2$; %
+	if doesn't, try dropping from $(N + N -1)$th floor and repete the loop (if $Egg1$ still remain unbroken) until reaching the top %
+	$K$.
+	\item
+	The solve for $N$ should be found in inequation
+		\[N + N-1 + N-2 + \dots + 1 \ge K\]
+	and therefore we have  
+		\[\frac{N \cdot (N+1)}{2} \ge K\]
+	In this case, $K=100$, so we have 
+	\[N=\left \lceil \frac{-1+\sqrt{1-4\cdot 200}}{2} \right \rceil = 14\]
+	\end{itemize}
+\end{enumerate}
+\par}
+%\bibliographystyle{plain}
+%\bibliography{6.5}
+\end{document}
