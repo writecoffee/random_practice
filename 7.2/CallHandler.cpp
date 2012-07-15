@@ -11,6 +11,7 @@ CallHandler::CallHandler() {
 }
 
 void CallHandler::employ(Employee *newEmployee) {
+	newEmployee->reg(this);
 	_employees_list[newEmployee->rank()]->push_back(newEmployee);
 }
 
@@ -18,9 +19,7 @@ Employee *CallHandler::getCallHandler(Call *call) {
 	for (int level = (int)(call->rank()); level < CallHandler::LEVELS; ++level) {
 		vector<Employee *> *emp_lev = _employees_list[level];
 		for (vector<Employee *>::iterator it = emp_lev->begin(); it != emp_lev->end(); ++it) {
-			if ((*it)->isFree()) {
-				return *it;
-			}
+			if ((*it)->isFree()) { return *it; }
 		}
 	}
 
@@ -31,4 +30,13 @@ void CallHandler::dispatchCall(Call *call) {
 	Employee *emp = getCallHandler(call);
 	if (emp) { emp->receiveCall(call); }
 	else { _call_queues[call->rank()].push(call); }
+}
+
+void CallHandler::update() {
+	for (int i = 0; i < LEVELS; ++i) {
+		if (!_call_queues[i].empty()) {
+			dispatchCall(_call_queues[i].front());
+			_call_queues[i].pop();
+		}
+	}
 }

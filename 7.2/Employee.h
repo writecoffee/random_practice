@@ -11,6 +11,7 @@ class Call;
 class Employee {
 public:
 	Employee(int rank, const char *name);
+	void reg(CallHandler *callHandler);
 	virtual void receiveCall(Call *call) = 0;
 	virtual void callHandled(Call *call) = 0;
 	virtual void cannotHandle(Call *call) = 0;

@@ -13,3 +13,7 @@ int Employee::rank() const {
 bool Employee::isFree() const {
 	return _free;
 }
+
+void Employee::reg(CallHandler *callHandler) {
+	_callHandler = callHandler;
+}

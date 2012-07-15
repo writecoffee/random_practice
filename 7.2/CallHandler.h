@@ -19,6 +19,7 @@ public:
 
 	CallHandler();
 	Employee *getCallHandler(Call *call);
+	void update();
 	void dispatchCall(Call *call);
 	void employ(Employee *newEmployee);
 
