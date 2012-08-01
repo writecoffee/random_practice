@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}\geometry{left=2.5cm,right=2.5cm,top=3.5cm,bottom=3.5cm}
+\pagestyle{headings}
+\usepackage{enumerate} 
+\usepackage{amssymb} \linespread{1} \hyphenation{}
+\usepackage{booktabs}
+\author{writecoffee} \title{8.7}
+%\usepackage{fancyhdr} \pagestyle{fancy} \fancyfoot{} \fancyhead[LE,RO]{\textsc \leftmark~~~~\thepage} \fancyhead[LO,RE]{\textsc \leftmark~~~~\thepage} \renewcommand{\headrulewidth}{0.4pt} 
+\begin{document}
+\maketitle
+
+{\setlength{\baselineskip}{1\baselineskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\begin{enumerate}[1.]
+\item
+	First Glimpse
+	\begin{itemize}
+	\item
+		Subdivide the problem into smaller problems in a descending way as each denomination could be expressed by itself or ones that are smaller than it.
+	\item
+		Accumulate the expression ways in an ascending way after finish.
+	\end{itemize}
+\item
+	Leap in
+	\begin{itemize}
+	\item
+		In each level's $make\_change$, the number of ways for sub-dividing is $n \left.\right/ denomin + 1$, where $denomin$ is the step width for each iteration. But %
+		note that if the $nxt\_de$ is not 1, its credit should be substitued by its sub-level $make\_change$.
+	\end{itemize}
+\end{enumerate}
+\par}
+%\bibliographystyle{plain}
+%\bibliography{8.7}
+\end{document}
