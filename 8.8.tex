@@ -1,0 +1,34 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}\geometry{left=2.5cm,right=2.5cm,top=3.5cm,bottom=3.5cm}
+\pagestyle{headings}
+\usepackage{enumerate} 
+\usepackage{amssymb} \linespread{1} \hyphenation{}
+\usepackage{booktabs}
+\author{writecoffee} \title{8.8}
+%\usepackage{fancyhdr} \pagestyle{fancy} \fancyfoot{} \fancyhead[LE,RO]{\textsc \leftmark~~~~\thepage} \fancyhead[LO,RE]{\textsc \leftmark~~~~\thepage} \renewcommand{\headrulewidth}{0.4pt} 
+\begin{document}
+\maketitle
+
+{\setlength{\baselineskip}{1\baselineskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\begin{enumerate}[1.]
+\item
+	First Glimpse
+	\begin{itemize}
+	\item
+		Apply the backtracking algorithm - for each row, the column where we want to put the queen is based on the condition that satisfies the restrictions:
+		\begin{enumerate}[A.]
+		\item
+			Shouldn't be placed on the same column.
+		\item
+			Shouldn't be placed on the same diagonal.
+		\end{enumerate}
+	\item
+		A vector for recording the progress shouldn't be miss.
+	\end{itemize}
+\end{enumerate}
+\par}
+%\bibliographystyle{plain}
+%\bibliography{8.8}
+\end{document}
