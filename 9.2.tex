@@ -1,0 +1,42 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}\geometry{left=2.5cm,right=2.5cm,top=3.5cm,bottom=3.5cm}
+\pagestyle{headings}
+\usepackage{enumerate} 
+\usepackage{amssymb} \linespread{1} \hyphenation{}
+\usepackage{booktabs}
+\author{writecoffee} \title{9.2}
+%\usepackage{fancyhdr} \pagestyle{fancy} \fancyfoot{} \fancyhead[LE,RO]{\textsc \leftmark~~~~\thepage} \fancyhead[LO,RE]{\textsc \leftmark~~~~\thepage} \renewcommand{\headrulewidth}{0.4pt} 
+\begin{document}
+\maketitle
+
+{\setlength{\baselineskip}{1\baselineskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\begin{enumerate}[1.]
+\item
+	Solution 1: Sacrifice the Space
+	\begin{itemize}
+	\item
+		For each string, record the appearence of the 26 letters and $make\_pair$. Do a quick sort.
+	\item
+		The record work is proportional to the size of each $string$s, namely $O(m)$. %
+		And the comparison for the record sets take constant time (thinking the maximum size of these 26 letters). %
+		At last, the  $quick\_sort$ which takes $O(n\log{n})$ timing dominates the total timing complexity.
+	\item
+		As for the space complexity, extra mapping set for each $string$ consumes $O(n)$.
+	\end{itemize}
+\item
+	Solution 2: Sacrifice the Timing
+	\begin{itemize}
+	\item
+		Sort the $string$ list in place, where we need to copy the strings, compare the anagrams every time comparing each list item.
+	\item
+		For the sake of each comparison inside the outer $quick\_sort$ loop, the total time complexity is $O(mn\log{n})$.
+	\item
+		Because we exploit temporary space for each comparison, the space complexity could be considered $O(1)$.
+	\end{itemize}
+\end{enumerate}
+\par}
+%\bibliographystyle{plain}
+%\bibliography{9.2}
+\end{document}
