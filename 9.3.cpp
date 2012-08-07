@@ -46,7 +46,7 @@ int search(int array[], int tar, int left, int right) {
 	}
 }
 
-void test() {
+void tc_right_shifted() {
 	int array[] = {96, 97, 98, 99, 1, 2, 3, 4, 5};
 	for (int i = 0; i < sizeof(array) / sizeof(int); ++i) {
 		int index = search(array, array[i], 0, sizeof(array) / sizeof(int));
@@ -56,8 +56,17 @@ void test() {
 	cout << search(array, 100, 0, 9) << endl;
 }
 
+void tc_left_shifted() {
+	int array[] = {4, 5, 96, 97, 98, 99, 1, 2, 3};
+	for (int i = 0; i < sizeof(array) / sizeof(int); ++i) {
+		int index = search(array, array[i], 0, sizeof(array) / sizeof(int));
+		cout << "target value: " << array[i] << " lies at position - " << index << endl;
+	}
 
-void test_dup() {
+	cout << search(array, 100, 0, 9) << endl;
+}
+
+void tc_dup() {
 	int array[] = {96, 96, 96, 96, 1, 1, 1, 1, 1};
 	for (int i = 0; i < sizeof(array) / sizeof(int); ++i) {
 		int index = search(array, array[i], 0, sizeof(array) / sizeof(int));
@@ -68,7 +77,8 @@ void test_dup() {
 }
 
 int main() {
-	test();
-	test_dup();
+	tc_right_shifted();
+	tc_left_shifted();
+	tc_dup();
 	return 0;
 }
