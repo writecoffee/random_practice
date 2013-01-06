@@ -14,7 +14,7 @@ class LinkedList:
     end = None
     def __init__(self):
         # create dummpy end node
-        end = LLNode(None, None)
+        self.end = LLNode(None, None)
     def appendNewNode(self, newNode):
         if not self.head:
             newNode.updateNext(self.end)
