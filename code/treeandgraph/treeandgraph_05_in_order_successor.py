@@ -18,7 +18,11 @@ def inOrderSuccessor(cr):
     elif cr._father and cr == cr._father._lchild:
         return cr._father
     elif cr._father and cr == cr._father._rchild:
-        return inOrderSuccessor(cr._father)
+        # go up until we are on left
+        cr = cr._father
+        while cr and cr == cr._father._rchild:
+            cr = cr._father
+        return cr
     else:
         return None
 
