@@ -22,7 +22,7 @@ using namespace std;
 
 template <typename T>
 bool chk_bit(T val) {
-    return (val & (val - 1)) == 0;
+    return (val & val - 1) == 0;
 }
 
 template <typename T>

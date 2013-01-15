@@ -17,10 +17,22 @@ void print_bin(T num) {
     cout << endl;
 }
 
+// O(n)
 int count_distance(int a, int b) {
     int same = a ^ b, cnt = 0;
     for (int i = 0; i < sizeof(int) * 8; ++i) {
         (same & (1 << i))? cnt++ : cnt;
+    }
+
+    return cnt;
+}
+
+// O(1/2 n)
+int count_distance_optimized(int a, int b) {
+    int same = a ^ b, cnt = 0;
+    while (same != 0) {
+	same &= same - 1;
+	cnt++;
     }
 
     return cnt;
@@ -32,6 +44,7 @@ int main() {
     print_bin<int>(a);
     print_bin<int>(b);
     cout << count_distance(a, b) << endl;
+    cout << count_distance_optimized(a, b) << endl;
 
     return 0;
 }
