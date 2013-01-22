@@ -10,7 +10,7 @@ static bool check(int row) {
     int rdiff, cdiff;
     for (int ri = 1; ri < row; ++ri) {
         if (columns[ri] != 0) {
-            cdiff = abs(columns[ri] - columns[row]);
+            cdiff = abs((double)(columns[ri] - columns[row]));
             rdiff = row - ri;
             if (cdiff == 0 || cdiff == rdiff) {
                 return false;
@@ -35,7 +35,7 @@ static void print_grid() {
 
 static void find_space(int row) {
     if (row > n) {
-//		print_grid();
+        print_grid();
         cnt++;
         return;
     }
