@@ -1,5 +1,6 @@
 
 maxHeight = 0
+cache = {}
 
 def check(stack, box):
     if not stack:
@@ -16,28 +17,26 @@ def getHeight(stack):
         height += s[1]
     return height
 
-def opt(i, boxes, stack):
-    print stack
+def opt(boxes, stack):
     global maxHeight
-    if i == len(boxes):
-        curHeight = getHeight(stack)
-        if curHeight > maxHeight:
-            maxHeight = curHeight
-        return
 
-    flag = True
+    # return content from cache
+    if stack and stack[0] in cache:
+        return cache[stack[0]]
+
     for box in boxes:
         if box not in stack and check(stack, box):
-            flag = False
-            opt(i + 1, boxes, [box] + stack)
-    if flag:
-        curHeight = getHeight(stack)
-        if curHeight > maxHeight:
-            maxHeight = curHeight
+            opt(boxes, [box] + stack)
+            curHeight = getHeight([box] + stack)
+            if box not in cache or curHeight > cache[box]:
+                cache[box] = curHeight
+            if curHeight > maxHeight:
+                maxHeight = curHeight
 
 def test():
     boxes = [(4,3,4), (5,4,6), (7,8,9)]
-    opt(0, boxes, [])
+    opt(boxes, [])
     print maxHeight
+    print cache
 
 test()
